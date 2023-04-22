@@ -18,6 +18,7 @@
   "nvim-lspconfig": { "branch": "master", "commit": "cf95480e876ef7699bf08a1d02aa0ae3f4d5f353" },
   "nvim-tree.lua": { "branch": "master", "commit": "967865cdb7ac56046af01a0cd79f215bda5f59aa" },
   "nvim-web-devicons": { "branch": "master", "commit": "4ec26d67d419c12a4abaea02f1b6c57b40c08d7e" },
+  "rust-tools.nvim": { "branch": "master", "commit": "71d2cf67b5ed120a0e31b2c8adb210dd2834242f" },
   "sonokai": { "branch": "master", "commit": "17ba8e0dd81db0220c4b13aecdd566951d7b8222" },
   "vim-commentary": { "branch": "master", "commit": "e87cd90dc09c2a203e13af9704bd0ef79303d755" },
   "vim-surround": { "branch": "master", "commit": "3d188ed2113431cf8dac77be61b842acb64433d9" },

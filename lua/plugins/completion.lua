@@ -11,11 +11,14 @@ return {
       "hrsh7th/nvim-cmp",
       "hrsh7th/cmp-nvim-lsp",
       -- Neodev
-      "folke/neodev.nvim"
+      "folke/neodev.nvim",
+      -- Rust Tools
+      "simrat39/rust-tools.nvim",
     },
     config = function()
       local lsp = require("lsp-zero")
       local neodev = require("neodev")
+      local rust_tools = require("rust-tools")
 
       -- IMPORTANT: Must setup neodev before lspconfig
       neodev.setup({
@@ -43,11 +46,25 @@ return {
       end)
 
       lsp.ensure_installed({
+        "gopls",
         "lua_ls",
-        "gopls"
+        "rust_analyzer"
       })
 
+      lsp.skip_server_setup({ "rust_analyzer" })
+
       lsp.setup()
+
+      -- IMPORTANT: Setup rust-tools after lsp-zero
+      rust_tools.setup({
+        server = {
+          on_attach = function(_, buf)
+            vim.keymap.set("n", "<leader>ca",
+                           rust_tools.hover_actions.hover_actions,
+                           { buffer = buf })
+          end
+        }
+      })
     end
   },
   {
@@ -93,4 +110,8 @@ return {
     end,
     config = false,
 	},
+  {
+    "simrat39/rust-tools.nvim",
+    config = false,
+  },
 }

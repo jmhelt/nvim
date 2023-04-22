@@ -10,8 +10,6 @@ return {
       -- Autocompletion
       "hrsh7th/nvim-cmp",
       "hrsh7th/cmp-nvim-lsp",
-      -- Snippets
-      "L3MON4D3/LuaSnip",
       -- Neodev
       "folke/neodev.nvim"
     },
@@ -19,7 +17,7 @@ return {
       local lsp = require("lsp-zero")
       local neodev = require("neodev")
 
-      -- IMPORTANT: setup neodev BEFORE lspconfig
+      -- IMPORTANT: Must setup neodev before lspconfig
       neodev.setup({
         types = true
       })
@@ -59,26 +57,40 @@ return {
       "hrsh7th/cmp-path",
       "hrsh7th/cmp-nvim-lsp",
       "saadparwaiz1/cmp_luasnip",
-      "L3MON4D3/LuaSnip",
     },
   },
   {
     "saadparwaiz1/cmp_luasnip",
     dependencies = {
-      "L3MON4D3/LuaSnip"
+      "L3MON4D3/LuaSnip",
     }
+  },
+  {
+    "hrsh7th/cmp-nvim-lsp",
+    dependencies = {
+      "neovim/nvim-lspconfig",
+    },
+    config = false,
+  },
+  {
+    "neovim/nvim-lspconfig",
+    dependencies = {
+	    "williamboman/mason-lspconfig.nvim",
+    },
+    config = false,
   },
   {
 	  "williamboman/mason-lspconfig.nvim",
 	  dependencies = {
 	    "williamboman/mason.nvim",
     },
+    config = false,
   },
   {
 	  "williamboman/mason.nvim",
     build = function()
       pcall(vim.cmd, "MasonUpdate")
     end,
-    config = true,
+    config = false,
 	},
 }

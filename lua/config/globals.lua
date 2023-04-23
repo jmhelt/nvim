@@ -1,6 +1,5 @@
--- Recommended by nvim-tree 
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
+local g = vim.g
 
--- Set leader
-vim.g.mapleader = "<Space>"
+-- Set space as leader key
+g.mapleader = " "
+g.maplocalleader = " "

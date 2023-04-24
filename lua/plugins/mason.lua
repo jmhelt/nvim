@@ -8,6 +8,7 @@ local M = {
     opts = {
       ensure_installed = {
         "lua_ls",
+        "marksman",
         "rust_analyzer",
       }
     },

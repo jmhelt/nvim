@@ -3,6 +3,7 @@ local M = {
   dependencies = {
     "folke/neodev.nvim",
     "hrsh7th/cmp-nvim-lsp",
+    "nvim-telescope/telescope.nvim",
     "simrat39/rust-tools.nvim",
     "williamboman/mason-lspconfig.nvim",
   },
@@ -12,6 +13,7 @@ local M = {
     local mason_lspconfig = require("mason-lspconfig")
     local neodev = require("neodev")
     local rust_tools = require("rust-tools")
+    local telescope_builtin = require("telescope.builtin")
 
     -- IMPORTANT: Setup neodev before lspconfig
     neodev.setup({})
@@ -42,6 +44,18 @@ local M = {
         })
       end
     })
+
+    local setopts = { noremap = true, silent = true }
+
+    vim.keymap.set("n", "<leader>gD", vim.lsp.buf.declaration, setopts)
+    vim.keymap.set("n", "<leader>gd", telescope_builtin.lsp_definitions, setopts)
+    vim.keymap.set("n", "<leader>gr", telescope_builtin.lsp_references, setopts)
+    vim.keymap.set("n", "<leader>gi", telescope_builtin.lsp_implementations, setopts)
+    vim.keymap.set("n", "<leader>gt", telescope_builtin.lsp_type_definitions, setopts)
+    vim.keymap.set("n", "<leader>sd", telescope_builtin.lsp_document_symbols, setopts)
+    vim.keymap.set("n", "<leader>K", vim.lsp.buf.hover, setopts)
+    vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, setopts)
+    vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, setopts)
   end,
 }
 
